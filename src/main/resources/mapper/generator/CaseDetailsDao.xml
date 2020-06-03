@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.CaseDetailsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.CaseDetailsEntity" id="caseDetailsMap">
+        <result property="id" column="id"/>
+        <result property="cId" column="c_id"/>
+        <result property="caseTitleName" column="case_title_name"/>
+        <result property="caseTitleLogo" column="case_title_logo"/>
+        <result property="creationTime" column="creation_time"/>
+        <result property="creationName" column="creation_name"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+
+</mapper>

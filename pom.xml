@@ -41,6 +41,7 @@
 		<fastjson.version>1.2.60</fastjson.version>
 		<hutool.version>4.1.1</hutool.version>
 		<lombok.version>1.18.4</lombok.version>
+		<fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
 
 		<!--wagon plugin 配置-->
 		<service-path>/work/renren</service-path>
@@ -231,6 +232,12 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
+		</dependency>
+		<!--FastDFS客户端-->
+		<dependency>
+			<groupId>com.github.tobato</groupId>
+			<artifactId>fastdfs-client</artifactId>
+			<version>${fastDFS.client.version}</version>
 		</dependency>
 	</dependencies>
 

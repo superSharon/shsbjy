@@ -34,16 +34,15 @@ spring:
                         multi-statement-allow: true
 
 
-##多数据源的配置
-#dynamic:
-#  datasource:
-#    slave1:
-#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
-#      username: sa
-#      password: 123456
-#    slave2:
-#      driver-class-name: org.postgresql.Driver
-#      url: jdbc:postgresql://localhost:5432/renren_security
-#      username: renren
-#      password: 123456
+fdfs:
+    so-timeout: 1501 # 超时时间
+    connect-timeout: 601 # 连接超时时间
+    thumb-image: # 缩略图
+        width: 60
+        height: 60
+    tracker-list: # tracker地址
+        - tracker:22122
+
+
+image:
+    adress: http://118.31.108.191/
