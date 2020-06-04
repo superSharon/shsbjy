@@ -41,6 +41,14 @@ public class CaseEntity implements Serializable {
 	 */
 	private String caseLogo;
 	/**
+	 * 地址
+	 */
+	private String caseAddress;
+	/**
+	 * 简介
+	 */
+	private String caseSynopsis;
+	/**
 	 * 创建时间
 	 */
 	private Date creationTime;
@@ -52,5 +60,24 @@ public class CaseEntity implements Serializable {
 	 * 修改时间
 	 */
 	private Date modifyTime;
+
+
+	/**
+	 * 扩展字段 类别名称
+	 */
+	private String categoryName;
+
+	/**
+	 * 当前页数
+	 */
+	private Integer page;
+	/**
+	 * 显示条数
+	 */
+	private Integer pageSize;
+	/**
+	 * 图片url
+	 */
+	private String photoUrl;
 
 }

@@ -43,7 +43,7 @@ public class InformationEntity implements Serializable {
 	/**
 	 * 图片路径
 	 */
-	private String photoUrl;
+	private String logoUrl;
 	/**
 	 * 发布时间
 	 */
@@ -57,4 +57,22 @@ public class InformationEntity implements Serializable {
 	 */
 	private Date modifyTime;
 
+
+	/**
+	 * 图片url
+	 */
+	private String photoUrl;
+	/**
+	 *
+	 */
+	private String categoryName;
+
+	/**
+	 * 当前页数
+	 */
+	private Integer page;
+	/**
+	 * 显示条数
+	 */
+	private Integer pageSize;
 }

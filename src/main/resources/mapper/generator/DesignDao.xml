@@ -10,10 +10,25 @@
         <result property="name" column="name"/>
         <result property="headUrl" column="head_url"/>
         <result property="desginIdea" column="desgin_idea"/>
+        <result property="honor" column="honor"/>
         <result property="creationTime" column="creation_time"/>
         <result property="creationName" column="creation_name"/>
         <result property="modifyTime" column="modify_time"/>
     </resultMap>
+
+    <!--设计展示-->
+    <select id="getDesignEntity" resultType="io.renren.modules.generator.entity.DesignEntity" parameterType="io.renren.modules.generator.entity.DesignEntity">
+        select  d.id AS id,
+				d.design_number AS designNumber,
+				d.name as name,
+				d.head_url as headUrl,
+				d.desgin_idea as desginIdea,
+				d.honor as honor,
+				GROUP_CONCAT(p.url) AS photoUrl
+				from design d
+				LEFT JOIN picture p ON(p.remark_id=d.id)
+            GROUP BY name
+    </select>
 
 
 </mapper>

@@ -41,6 +41,10 @@ public class DesignEntity implements Serializable {
 	 */
 	private String desginIdea;
 	/**
+	 * 荣誉
+	 */
+	private String honor;
+	/**
 	 * 录入时间
 	 */
 	private Date creationTime;
@@ -52,5 +56,19 @@ public class DesignEntity implements Serializable {
 	 * 修改时间
 	 */
 	private Date modifyTime;
+
+	/**
+	 * 图片url
+	 */
+	private String photoUrl;
+
+	/**
+	 * 当前页数
+	 */
+	private Integer page;
+	/**
+	 * 显示条数
+	 */
+	private Integer pageSize;
 
 }

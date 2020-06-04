@@ -10,10 +10,60 @@
         <result property="caseCategory" column="case_category"/>
         <result property="caseTitle" column="case_title"/>
         <result property="caseLogo" column="case_logo"/>
+        <result property="caseAddress" column="case_address"/>
+        <result property="caseSynopsis" column="case_synopsis"/>
         <result property="creationTime" column="creation_time"/>
         <result property="creationName" column="creation_name"/>
         <result property="modifyTime" column="modify_time"/>
     </resultMap>
 
+
+
+    <!--案例展示-->
+    <select id="getCaseList" resultType="io.renren.modules.generator.entity.CaseEntity" parameterType="io.renren.modules.generator.entity.CaseEntity">
+        select
+                c_id AS cId,
+				case_number AS caseNumber,
+				c.case_title as caseTitle,
+				c.case_logo as caseLogo,
+				c.case_address as caseAddrress,
+				c.case_synopsis as caseSynopsis,
+                GROUP_CONCAT(p.url) as photoUrl,
+				d.category_name as categoryName
+				from `case` c
+				LEFT JOIN dictionary d ON(c.case_category=d.id)
+                LEFT JOIN picture p ON(p.remark_id=c.c_id)
+				<where>
+                    <if test="caseCategory !=null and caseCategory != ''">
+                        and c.case_category=#{caseCategory}
+                    </if>
+                    <if test="categoryName !=null and categoryName != ''">
+                        and d.category_name=#{categoryName}
+                    </if>
+                </where>
+        GROUP BY case_title
+    </select>
+
+
+    <!--案例详情-->
+    <select id="getCaseDetails" resultType="io.renren.modules.generator.model.result.CaseDetailsResult" parameterType="io.renren.modules.generator.model.params.CaseDetailsParam">
+        select cd.case_title_name as caseTitleName,
+               cd.case_title_logo as caseTitleLogo
+               from case_details cd
+		       <where>
+                   <if test="cId !=null and cId !=''">
+                       and cd.c_id=#{cId}
+                   </if>
+               </where>
+    </select>
+    <!--进去详情的时候同时调用案例内容-->
+    <select id="getRemarkResult" resultType="io.renren.modules.generator.model.result.RemarkResult" parameterType="io.renren.modules.generator.model.params.RemarkParam">
+        select  GROUP_CONCAT(p.url) as photoUrl,
+                r.content_title as contentTitle,
+                r.content from remark r
+		LEFT JOIN picture p on(r.id=p.remark_id)
+		where r.distinguish_id=#{distinguishId}
+		GROUP BY content_title
+    </select>
 
 </mapper>

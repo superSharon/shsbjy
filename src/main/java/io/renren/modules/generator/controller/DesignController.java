@@ -3,6 +3,9 @@ package io.renren.modules.generator.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.renren.modules.generator.entity.CaseEntity;
+import io.renren.modules.generator.service.CaseService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +33,18 @@ import io.renren.common.utils.R;
 public class DesignController {
     @Autowired
     private DesignService designService;
+
+    /**
+     * 设计展示
+     */
+    @RequestMapping("/designList")
+    public R getDesignEntity(@RequestBody DesignEntity params){
+
+        Page staffList = designService.getDesignEntity(params);
+        return R.ok().put("list",staffList);
+    }
+
+
 
     /**
      * 列表

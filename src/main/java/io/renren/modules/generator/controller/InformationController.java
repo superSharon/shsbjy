@@ -3,6 +3,8 @@ package io.renren.modules.generator.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.renren.modules.generator.entity.DesignEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +32,18 @@ import io.renren.common.utils.R;
 public class InformationController {
     @Autowired
     private InformationService informationService;
+
+    /**
+     * 资讯展示
+     */
+    @RequestMapping("/informationList")
+    public R getInformationEntity(@RequestBody InformationEntity params){
+
+        Page staffList = informationService.getInformationEntity(params);
+        return R.ok().put("list",staffList);
+    }
+
+
 
     /**
      * 列表

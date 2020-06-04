@@ -1,8 +1,18 @@
 package io.renren.modules.generator.dao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.renren.modules.generator.entity.CaseEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.renren.modules.generator.model.params.CaseDetailsParam;
+import io.renren.modules.generator.model.params.CaseParam;
+import io.renren.modules.generator.model.params.RemarkParam;
+import io.renren.modules.generator.model.result.CaseDetailsResult;
+import io.renren.modules.generator.model.result.CaseResult;
+import io.renren.modules.generator.model.result.RemarkResult;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 案例表
@@ -13,5 +23,23 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CaseDao extends BaseMapper<CaseEntity> {
-	
+
+    /**
+     * 案例展示
+     * @param caseParam
+     * @return
+     */
+    List<CaseEntity> getCaseList(CaseEntity caseParam);
+
+    /**
+     * 案例详情
+     * @param caseDetailsParam
+     * @return
+     */
+    List<CaseDetailsResult> getCaseDetails(CaseDetailsParam caseDetailsParam);
+
+    /**
+     *案例详情内容
+     */
+    List<RemarkResult> getRemarkResult(RemarkParam remarkParam);
 }

@@ -4,6 +4,8 @@ import io.renren.modules.generator.entity.InformationEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 资讯
  *
@@ -13,5 +15,12 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface InformationDao extends BaseMapper<InformationEntity> {
+
+    /**
+     * 资讯
+     * @param informationEntity
+     * @return
+     */
+    List<InformationEntity> getInformationEntity(InformationEntity informationEntity);
 	
 }

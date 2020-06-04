@@ -1,6 +1,12 @@
 package io.renren.modules.generator.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.renren.modules.generator.entity.CaseEntity;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +30,22 @@ public class DesignServiceImpl extends ServiceImpl<DesignDao, DesignEntity> impl
         );
 
         return new PageUtils(page);
+    }
+
+    @Autowired
+    private DesignDao designDao;
+    /**
+     * 设计展示
+     * @param caseParam
+     * @return
+     */
+    @Override
+    public Page<DesignEntity> getDesignEntity(@Param("caseParam") DesignEntity caseParam){
+        QueryWrapper<DesignEntity> wrapper = new QueryWrapper<>();
+        wrapper.setEntity(caseParam);
+        Page<DesignEntity> page = new Page<>(caseParam.getPage(), caseParam.getPageSize());
+        List<DesignEntity> staffList = designDao.getDesignEntity(caseParam);
+        return page.setRecords(staffList);
     }
 
 }

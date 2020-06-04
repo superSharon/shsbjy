@@ -1,6 +1,13 @@
 package io.renren.modules.generator.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.renren.modules.generator.dao.DesignDao;
+import io.renren.modules.generator.entity.DesignEntity;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +31,22 @@ public class InformationServiceImpl extends ServiceImpl<InformationDao, Informat
         );
 
         return new PageUtils(page);
+    }
+
+    @Autowired
+    private InformationDao informationDao;
+    /**
+     * 资讯展示
+     * @param caseParam
+     * @return
+     */
+    @Override
+    public Page<InformationEntity> getInformationEntity(@Param("caseParam") InformationEntity caseParam){
+        QueryWrapper<InformationEntity> wrapper = new QueryWrapper<>();
+        wrapper.setEntity(caseParam);
+        Page<InformationEntity> page = new Page<>(caseParam.getPage(), caseParam.getPageSize());
+        List<InformationEntity> staffList = informationDao.getInformationEntity(caseParam);
+        return page.setRecords(staffList);
     }
 
 }
