@@ -41,7 +41,7 @@ fdfs:
         width: 60
         height: 60
     tracker-list: # tracker地址
-        - tracker:22122
+        - 172.16.243.58:22122
 
 
 image:

@@ -8,10 +8,21 @@
         <result property="id" column="id"/>
         <result property="category" column="category"/>
         <result property="categoryName" column="category_name"/>
+        <result property="remarks" column="remarks"/>
         <result property="creationTime" column="creation_time"/>
         <result property="creationName" column="creation_name"/>
         <result property="creationModify" column="creation_modify"/>
     </resultMap>
 
+    <!--前端 列表目录-->
+    <select id="getDictionaryEntity" resultType="io.renren.modules.generator.model.result.DictionaryResult">
+        select id,category_name as categoryName FROM dictionary
+		where category=#{category}
+    </select>
+
+    <!--添加字典选择类别 下拉框-->
+    <select id="getDictionarySel" resultType="io.renren.modules.generator.model.result.DictionarySel">
+        SELECT category,remarks from dictionary  GROUP BY category
+    </select>
 
 </mapper>

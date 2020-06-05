@@ -36,9 +36,10 @@ public class CaseServiceImpl extends ServiceImpl<CaseDao, CaseEntity> implements
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String caseCategory = (String)params.get("caseCategory");
         IPage<CaseEntity> page = this.page(
                 new Query<CaseEntity>().getPage(params),
-                new QueryWrapper<CaseEntity>()
+                new QueryWrapper<CaseEntity>()//.eq("case_category",caseCategory)
         );
 
         return new PageUtils(page);
