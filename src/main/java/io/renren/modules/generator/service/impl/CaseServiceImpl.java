@@ -57,12 +57,16 @@ public class CaseServiceImpl extends ServiceImpl<CaseDao, CaseEntity> implements
      * @return
      */
     @Override
-   public Page<CaseEntity> getCaseList(@Param("caseParam") CaseEntity caseParam){
-        QueryWrapper<CaseEntity> wrapper = new QueryWrapper<>();
-        wrapper.setEntity(caseParam);
-        Page<CaseEntity> page = new Page<>(caseParam.getPage(), caseParam.getPageSize());
-        List<CaseEntity> staffList = caseDao.getCaseList(caseParam);
-        return page.setRecords(staffList);
+   public IPage<CaseEntity> getCaseList(CaseEntity caseParam)throws RuntimeException{
+        Page<CaseEntity> page=null;
+        try{
+            page= new Page<>(caseParam.getPage(), caseParam.getPageSize());
+            page.setRecords( caseDao.getCaseList(page,caseParam));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return page;
    }
 
     /**

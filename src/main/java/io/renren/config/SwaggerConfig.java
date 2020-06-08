@@ -47,7 +47,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
         return new ApiInfoBuilder()
             .title("装修")
             .description("接口文档")
-            .termsOfServiceUrl("http://localhost:8080/renren-fast/")
+            .termsOfServiceUrl("http://118.31.108.191:8181/renren-fast/")
             .version("3.0.0")
             .build();
     }

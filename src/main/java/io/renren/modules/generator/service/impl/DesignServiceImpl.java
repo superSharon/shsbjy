@@ -41,11 +41,9 @@ public class DesignServiceImpl extends ServiceImpl<DesignDao, DesignEntity> impl
      */
     @Override
     public Page<DesignEntity> getDesignEntity(@Param("caseParam") DesignEntity caseParam){
-        QueryWrapper<DesignEntity> wrapper = new QueryWrapper<>();
-        wrapper.setEntity(caseParam);
         Page<DesignEntity> page = new Page<>(caseParam.getPage(), caseParam.getPageSize());
-        List<DesignEntity> staffList = designDao.getDesignEntity(caseParam);
-        return page.setRecords(staffList);
+        page.setRecords(designDao.getDesignEntity(page,caseParam));
+        return page;
     }
 
 }

@@ -42,11 +42,9 @@ public class InformationServiceImpl extends ServiceImpl<InformationDao, Informat
      */
     @Override
     public Page<InformationEntity> getInformationEntity(@Param("caseParam") InformationEntity caseParam){
-        QueryWrapper<InformationEntity> wrapper = new QueryWrapper<>();
-        wrapper.setEntity(caseParam);
         Page<InformationEntity> page = new Page<>(caseParam.getPage(), caseParam.getPageSize());
-        List<InformationEntity> staffList = informationDao.getInformationEntity(caseParam);
-        return page.setRecords(staffList);
+        page.setRecords(informationDao.getInformationEntity(page,caseParam));
+        return page;
     }
 
 }

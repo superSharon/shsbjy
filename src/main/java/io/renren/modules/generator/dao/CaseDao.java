@@ -29,7 +29,7 @@ public interface CaseDao extends BaseMapper<CaseEntity> {
      * @param caseParam
      * @return
      */
-    List<CaseEntity> getCaseList(CaseEntity caseParam);
+    List<CaseEntity> getCaseList(@Param("page") Page<CaseEntity> page,@Param("caseParam") CaseEntity caseParam);
 
     /**
      * 案例详情

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.renren.common.utils.GeneratID;
 import io.renren.modules.generator.entity.DesignEntity;
@@ -47,7 +48,7 @@ public class InformationController {
     })
     @PostMapping("/informationList")
     public R getInformationEntity(@RequestBody InformationEntity params){
-        Page staffList = informationService.getInformationEntity(params);
+        IPage<InformationEntity> staffList = informationService.getInformationEntity(params);
         return R.ok().put("list",staffList);
     }
 

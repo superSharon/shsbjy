@@ -1,8 +1,10 @@
 package io.renren.modules.generator.dao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.renren.modules.generator.entity.InformationEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,6 +23,6 @@ public interface InformationDao extends BaseMapper<InformationEntity> {
      * @param informationEntity
      * @return
      */
-    List<InformationEntity> getInformationEntity(InformationEntity informationEntity);
+    List<InformationEntity> getInformationEntity(@Param("page")Page<InformationEntity> page,@Param("informationEntity")InformationEntity informationEntity);
 	
 }

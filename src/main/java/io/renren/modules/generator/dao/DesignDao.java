@@ -1,8 +1,10 @@
 package io.renren.modules.generator.dao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.renren.modules.generator.entity.DesignEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,6 +23,6 @@ public interface DesignDao extends BaseMapper<DesignEntity> {
      * @param designEntity
      * @return
      */
-    List<DesignEntity> getDesignEntity(DesignEntity designEntity);
+    List<DesignEntity> getDesignEntity(@Param("page")Page<DesignEntity> page,@Param("designEntity") DesignEntity designEntity);
 	
 }

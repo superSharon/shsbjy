@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.renren.common.utils.GeneratID;
 import io.renren.modules.generator.entity.CaseEntity;
@@ -48,7 +49,7 @@ public class DesignController {
     })
     @PostMapping("/designList")
     public R getDesignEntity(@RequestBody DesignEntity params){
-        Page staffList = designService.getDesignEntity(params);
+        IPage<DesignEntity> staffList = designService.getDesignEntity(params);
         return R.ok().put("list",staffList);
     }
 

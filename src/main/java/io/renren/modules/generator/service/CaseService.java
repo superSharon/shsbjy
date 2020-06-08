@@ -32,7 +32,7 @@ public interface CaseService extends IService<CaseEntity> {
      * @param caseParam
      * @return
      */
-    Page<CaseEntity> getCaseList(@Param("caseParam") CaseEntity caseParam);
+    IPage<CaseEntity> getCaseList(@Param("caseParam") CaseEntity caseParam);
 
 
 

@@ -52,8 +52,9 @@ public class CaseController {
     })
     @PostMapping("/caseList")
     public R getCaseList(@RequestBody CaseEntity caseEntity){
-        Page staffList = caseService.getCaseList(caseEntity);
-        return R.ok().put("list",staffList);
+        IPage<CaseEntity> iPage = caseService.getCaseList(caseEntity);
+        iPage.getRecords();
+        return R.ok().put("list",iPage);
     }
 
     /**
